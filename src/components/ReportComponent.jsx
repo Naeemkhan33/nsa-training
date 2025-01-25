@@ -143,12 +143,12 @@ export default function Report() {
                 </div>
               </div>
 
-              {/* <Link
+              <Link
                 href={`/feedback/${emp.id}`}
                 className="block p-4 text-center font-semibold bg-red-500 text-white"
               >
                 Feedback
-              </Link> */}
+              </Link>
               <Link
                 href={`/employee/${emp.id}`}
                 className="block p-4 text-center font-semibold bg-red-500 text-white"
