@@ -116,7 +116,7 @@ export default function Report() {
                 <Image
                   width={144}
                   height={144}
-                  src={emp.photoURL || "/default-avatar.png"}
+                  src={emp.photoURL || "/assets/default-avatar.jpg"}
                   alt={emp.firstName}
                   className="mb-2 size-36 object-cover rounded-full mx-auto"
                 />

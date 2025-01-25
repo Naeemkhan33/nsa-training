@@ -107,7 +107,7 @@ export default function EmployeeFullView() {
               width={176}
               height={176}
               className="size-44 rounded-full shadow-lg border-4 border-primary-500"
-              src={employee.photoURL || "/default-avatar.png"}
+              src={employee.photoURL || "/assets/default-avatar.jpg"}
               alt={employee.firstName}
             />
           </div>
