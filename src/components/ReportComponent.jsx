@@ -127,7 +127,7 @@ export default function Report() {
                 <p className="text-gray-600">{emp.email || "N/A"}</p>
                 <div className="mt-4 flex flex-col justify-center items-center">
                   <QRCodeSVG
-                    value={`/feedback/${emp.id}`}
+                    value={`https://nsa-training333.netlify.app/feedback/${emp.id}`}
                     size={128}
                     fgColor="#000000"
                     bgColor="#ffffff"
