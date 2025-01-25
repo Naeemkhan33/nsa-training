@@ -2,21 +2,28 @@ import { firestore } from "../../../lib/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import FeedbackComponent from "@/components/FeedbackComponent";
 
+// FeedbackPage Component
 export default function FeedbackPage() {
   return (
-    <>
+    <div>
       <FeedbackComponent />
-    </>
+    </div>
   );
 }
-// This function is required when using `output: export` to pre-generate pages with dynamic routes.
-export async function generateStaticParams() {
-  // Get all employee IDs from your Firestore or any data source.
-  const employeesSnapshot = await getDocs(collection(firestore, "employees"));
-  const employees = employeesSnapshot.docs.map((doc) => doc.id);
 
-  // Return the list of dynamic parameters (employee IDs).
-  return employees.map((id) => ({
-    id: id,
-  }));
+// Static generation for dynamic paths
+export async function generateStaticParams() {
+  try {
+    // Fetch all employee IDs from the 'employees' collection in Firestore
+    const employeesSnapshot = await getDocs(collection(firestore, "employees"));
+    const employees = employeesSnapshot.docs.map((doc) => doc.id);
+
+    // Return an array of params with employee IDs
+    return employees.map((id) => ({
+      id: id,
+    }));
+  } catch (error) {
+    console.error("Error fetching employee IDs:", error);
+    return []; // Return an empty array in case of error
+  }
 }

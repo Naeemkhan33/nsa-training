@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
+  output: "standalone", // Use standalone for dynamic pages with export
   images: {
     unoptimized: true, // Disable the default image optimization API
   },
