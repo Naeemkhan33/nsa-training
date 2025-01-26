@@ -106,58 +106,60 @@ export default function Report() {
             Add Employee
           </Link>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {employees.map((emp) => (
-            <div
-              key={emp.id}
-              className="bg-white shadow-lg border border-primary rounded-lg overflow-hidden"
-            >
-              <div className="p-4 text-center">
-                <Image
-                  width={144}
-                  height={144}
-                  src={emp.photoURL || "/assets/default-avatar.jpg"}
-                  alt={emp.firstName}
-                  className="mb-2 size-36 object-cover rounded-full mx-auto"
-                />
-                <h3 className="text-lg font-semibold">
-                  {emp.firstName || "N/A"} {emp.middleName} {emp.surname}
-                </h3>
-                <p className="text-gray-600">{emp.phoneNumber || "N/A"}</p>
-                <p className="text-gray-600">{emp.email || "N/A"}</p>
-                <div className="mt-4 flex flex-col justify-center items-center">
-                  <QRCodeSVG
-                    value={`https://nsa-training333.netlify.app/feedback/${emp.id}`}
-                    size={128}
-                    fgColor="#000000"
-                    bgColor="#ffffff"
+
+        {/* Check if employees is empty */}
+        {employees.length === 0 ? (
+          <h3 className="text-center text-2xl font-semibold text-black">
+            Create Employee Profile
+          </h3>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {employees.map((emp) => (
+              <div
+                key={emp.id}
+                className="bg-white shadow-lg border border-primary rounded-lg overflow-hidden"
+              >
+                <div className="p-4 text-center">
+                  <Image
+                    width={144}
+                    height={144}
+                    src={emp.photoURL || "/assets/default-avatar.jpg"}
+                    alt={emp.firstName}
+                    className="mb-2 size-36 object-cover rounded-full mx-auto"
                   />
-                  <h6 className="text-sm mt-1">Scan to Feedback</h6>
+                  <h3 className="text-lg font-semibold">
+                    {emp.firstName || "N/A"} {emp.middleName} {emp.surname}
+                  </h3>
+                  <p className="text-gray-600">{emp.phoneNumber || "N/A"}</p>
+                  <p className="text-gray-600">{emp.email || "N/A"}</p>
+                  <div className="mt-4 flex flex-col justify-center items-center">
+                    <QRCodeSVG
+                      value={`https://nsa-training333.netlify.app/feedback/${emp.id}`}
+                      size={128}
+                      fgColor="#000000"
+                      bgColor="#ffffff"
+                    />
+                    <h6 className="text-sm mt-1">Scan to Feedback</h6>
+                  </div>
+
+                  {/* Display Total Rating */}
+                  <div className="mt-4">
+                    <p className="font-semibold">
+                      Total Rating: {emp.averageRating} ⭐
+                    </p>
+                  </div>
                 </div>
 
-                {/* Display Total Rating */}
-                <div className="mt-4">
-                  <p className="font-semibold">
-                    Total Rating: {emp.averageRating} ⭐
-                  </p>
-                </div>
+                <Link
+                  href={`/employee/${emp.id}`}
+                  className="block p-4 text-center font-semibold bg-red-500 text-white"
+                >
+                  Full View
+                </Link>
               </div>
-
-              {/* <Link
-                href={`/feedback/${emp.id}`}
-                className="block p-4 text-center font-semibold bg-red-500 text-white"
-              >
-                Feedback
-              </Link> */}
-              <Link
-                href={`/employee/${emp.id}`}
-                className="block p-4 text-center font-semibold bg-red-500 text-white"
-              >
-                Full View
-              </Link>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

@@ -136,7 +136,7 @@ export default function AddEmployee() {
                         : "/assets/default-avatar.jpg" // Default image if no photo is uploaded
                     }
                     alt="Upload a photo"
-                    className="rounded-full object-cover"
+                    className="rounded-full object-cover size-36"
                   />
                   <span className="inline-block mt-2 text-sm font-semibold text-black">
                     Upload Photo
