@@ -32,13 +32,14 @@ const Header = () => {
       <div className="container mx-auto px-8">
         <div className="flex justify-between">
           <Link href="/">
-            <Image
+            {/* <Image
               height={160}
               width={160}
               className="object-contain"
               src="/assets/logo.png"
               alt="logo"
-            />
+            /> */}
+            <h3 className="text-black font-black uppercase text-3xl">Logo</h3>
           </Link>
           <div>
             {user ? (
